@@ -6,7 +6,7 @@ import com.reporting.mocks.model.id.RiskRunId;
 import com.reporting.mocks.model.id.TradePopulationId;
 import com.reporting.mocks.model.trade.Tcn;
 
-public abstract class Risk {
+public class Risk {
     protected CalculationContextId calculationContextId;
     protected MarketEnvId marketEnvId;
     protected TradePopulationId tradePopulationId;
@@ -15,11 +15,11 @@ public abstract class Risk {
     protected Tcn tcn;
     protected RiskType riskType;
 
-    protected Risk() {
+    public Risk() {
 
     }
 
-    protected Risk(CalculationContextId calculationId, MarketEnvId marketEnvId, TradePopulationId tradePopulationId, RiskRunId riskRunId, String bookName, Tcn tcn) {
+    public Risk(CalculationContextId calculationId, MarketEnvId marketEnvId, TradePopulationId tradePopulationId, RiskRunId riskRunId, String bookName, Tcn tcn) {
         this.calculationContextId = calculationId;
         this.marketEnvId = marketEnvId;
         this.tradePopulationId = tradePopulationId;
