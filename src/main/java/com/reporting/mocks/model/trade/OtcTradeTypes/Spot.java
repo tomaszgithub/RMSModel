@@ -45,7 +45,7 @@ public class Spot extends OtcTrade {
     }
 
     @Override
-    public Spot getNewVersion() {
+    public Spot createNewVersion() {
         return new Spot(this);
     }
 }

@@ -20,7 +20,7 @@ public class Tcn {
         this(tcn.id, tcn.version + 1);
     }
 
-    public Tcn getNewVersion() {
+    public Tcn createNewVersion() {
         return new Tcn(this);
     }
 

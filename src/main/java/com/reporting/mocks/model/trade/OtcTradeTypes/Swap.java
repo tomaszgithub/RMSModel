@@ -14,7 +14,7 @@ public class Swap extends OtcTrade{
     }
 
     @Override
-    public OtcTrade getNewVersion() {
-        return super.getNewVersion();
+    public OtcTrade createNewVersion() {
+        return super.createNewVersion();
     }
 }

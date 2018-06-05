@@ -3,7 +3,8 @@ package com.reporting.mocks.model;
 public enum DataMarkerType {
     EOD("EOD"),
     SOD("SOD"),
-    IND("IntraDay");
+    IND("IntraDay"),
+    LIVE("LIVE");
 
     String name;
 

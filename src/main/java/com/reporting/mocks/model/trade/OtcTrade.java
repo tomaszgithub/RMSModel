@@ -20,7 +20,7 @@ public class OtcTrade extends Trade {
     }
 
     @Override
-    public OtcTrade getNewVersion() {
+    public OtcTrade createNewVersion() {
         return new OtcTrade(this);
     }
 

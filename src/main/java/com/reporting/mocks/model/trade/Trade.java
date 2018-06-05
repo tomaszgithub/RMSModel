@@ -23,7 +23,7 @@ public abstract class Trade {
 
 
     public Trade(Trade trade) {
-        this(trade.getKind(), trade.getTradeType(), trade.getTcn().getNewVersion(), trade.getBook());
+        this(trade.getKind(), trade.getTradeType(), trade.getTcn().createNewVersion(), trade.getBook());
     }
 
     public abstract Underlying getUnderlying();
@@ -56,7 +56,7 @@ public abstract class Trade {
         return buySell;
     }
 
-    public abstract Trade getNewVersion();
+    public abstract Trade createNewVersion();
 
     @Override
     public String toString() {

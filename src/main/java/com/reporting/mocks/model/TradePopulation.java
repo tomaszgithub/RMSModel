@@ -3,34 +3,42 @@ package com.reporting.mocks.model;
 import com.reporting.mocks.model.id.TradePopulationId;
 import com.reporting.mocks.model.trade.Tcn;
 import com.reporting.mocks.model.trade.Trade;
+import com.reporting.mocks.model.trade.TradeType;
 
-import java.util.Collection;
-import java.util.Date;
+import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class TradePopulation {
     protected TradePopulationId tradePopulationId;
-    protected ConcurrentHashMap<Tcn, Trade> trades;
+    protected String pricingGroupName;
+    protected ConcurrentHashMap<Tcn, Trade> tcnTrades;
+    protected ConcurrentHashMap<TradeType, Set<Trade>> tradeTypeTrades;
     protected Date asOf;
     protected DataMarkerType type;
 
-    public TradePopulation(String pricingGroupName, ConcurrentHashMap<Tcn, Trade> trades, DataMarkerType type) {
-        this.tradePopulationId = new TradePopulationId(pricingGroupName);
-        this.type = type;
-        this.trades = trades;
-        this.asOf = new Date();
-    }
 
     public TradePopulationId getId() {
         return this.tradePopulationId;
     }
 
-    public Collection<Trade> getTrades() {
-        return this.trades.values();
+    public Collection<Trade> getAllTrades() {
+        return this.tcnTrades.values();
+    }
+
+    public Set<Trade> getByTradeType(TradeType tradeType) { return this.tradeTypeTrades.get(tradeType);}
+
+    public Trade getByTcn(Tcn tcn) {return this.tcnTrades.get(tcn);}
+
+    public List<Tcn> getAllTcns() {
+        return Collections.list(tcnTrades.keys());
+    }
+
+    public List<TradeType> getAllTradeTypes() {
+        return Collections.list(tradeTypeTrades.keys());
     }
 
     public int getTradeCount() {
-        return this.trades.size();
+        return this.tcnTrades.size();
     }
 
     public DataMarkerType getType() {
@@ -42,8 +50,8 @@ public class TradePopulation {
     }
 
     public Trade getTrade(Tcn tcn) {
-        if (this.trades.containsKey(tcn)) {
-            return this.trades.get(tcn);
+        if (this.tcnTrades.containsKey(tcn)) {
+            return this.tcnTrades.get(tcn);
         }
         else {
             return null;
