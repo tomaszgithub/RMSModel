@@ -11,8 +11,8 @@ import java.util.concurrent.ConcurrentHashMap;
 public class TradePopulation {
     protected TradePopulationId tradePopulationId;
     protected String pricingGroupName;
-    protected ConcurrentHashMap<Tcn, Trade> tcnTrades;
-    protected ConcurrentHashMap<TradeType, Set<Trade>> tradeTypeTrades;
+    protected ConcurrentHashMap<UUID, Trade> tcnTrades;
+    protected ConcurrentHashMap<TradeType, ArrayList<Trade>> tradeTypeTrades;
     protected Date asOf;
     protected DataMarkerType type;
 
@@ -25,13 +25,7 @@ public class TradePopulation {
         return this.tcnTrades.values();
     }
 
-    public Set<Trade> getByTradeType(TradeType tradeType) { return this.tradeTypeTrades.get(tradeType);}
-
-    public Trade getByTcn(Tcn tcn) {return this.tcnTrades.get(tcn);}
-
-    public List<Tcn> getAllTcns() {
-        return Collections.list(tcnTrades.keys());
-    }
+    public List<Trade> getByTradeType(TradeType tradeType) { return this.tradeTypeTrades.get(tradeType);}
 
     public List<TradeType> getAllTradeTypes() {
         return Collections.list(tradeTypeTrades.keys());
@@ -50,8 +44,8 @@ public class TradePopulation {
     }
 
     public Trade getTrade(Tcn tcn) {
-        if (this.tcnTrades.containsKey(tcn)) {
-            return this.tcnTrades.get(tcn);
+        if (this.tcnTrades.containsKey(tcn.getId())) {
+            return this.tcnTrades.get(tcn.getId());
         }
         else {
             return null;
