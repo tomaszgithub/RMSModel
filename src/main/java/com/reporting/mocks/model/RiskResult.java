@@ -14,19 +14,31 @@ public class RiskResult {
     protected int fragmentCount;
     protected int fragmentNo;
     protected List<? extends Risk> results;
+    protected boolean isDeleteEvent;               // true if the contained results are a consequence of trades being removed
 
-    public RiskResult(CalculationContextId calculationContextId, TradePopulationId tradePopulationId, RiskRunId riskRunId, int fragmentCount, int fragmentNo, List<Risk> results) {
+    public RiskResult(CalculationContextId calculationContextId,
+                      TradePopulationId tradePopulationId,
+                      RiskRunId riskRunId,
+                      int fragmentCount,
+                      int fragmentNo,
+                      List<Risk> results,
+                      boolean isDeleteEvent) {
         this.calculationContextId = calculationContextId;
         this.tradePopulationId = tradePopulationId;
         this.riskRunId = riskRunId;
         this.fragmentCount = fragmentCount;
         this.fragmentNo = fragmentNo;
         this.results = results;
+        this.isDeleteEvent = isDeleteEvent;
     }
 
 
-    public RiskResult(CalculationContextId calculationContextId, TradePopulationId tradePopulationId, RiskRunId riskRunId, List<Risk> results) {
-        this(calculationContextId, tradePopulationId, riskRunId, 1, 0, results);
+    public RiskResult(CalculationContextId calculationContextId,
+                      TradePopulationId tradePopulationId,
+                      RiskRunId riskRunId,
+                      List<Risk> results,
+                      boolean isDeleteEvent) {
+        this(calculationContextId, tradePopulationId, riskRunId, 1, 0, results, isDeleteEvent);
     }
 
     public CalculationContextId getCalculationContextId() {
@@ -51,5 +63,9 @@ public class RiskResult {
 
     public List<? extends Risk> getResults() {
         return results;
+    }
+
+    public boolean isDeleteEvent() {
+        return isDeleteEvent;
     }
 }
