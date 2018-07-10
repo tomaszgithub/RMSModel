@@ -10,19 +10,23 @@ import com.reporting.mocks.model.underlying.Underlying;
 import java.util.Random;
 
 public class Delta extends Risk {
-    protected Double value;
-    protected Underlying underlying;
+    private final String nameValue = "value";
+    private final String nameUnderlying = "underlying";
 
     public Delta() {
         super();
         this.riskType = RiskType.DELTA;
     }
 
-    public Delta(CalculationContextId calculationId, MarketEnvId marketEnvId, TradePopulationId tradePopulationId, RiskRunId riskRunId, String bookName, Tcn tcn, Underlying currency) {
+    public Delta(Risk r) {
+        super(r);
+    }
+
+    public Delta(CalculationContextId calculationId, MarketEnvId marketEnvId, TradePopulationId tradePopulationId, RiskRunId riskRunId, String bookName, Tcn tcn, Underlying underlying) {
         super(calculationId, marketEnvId, tradePopulationId, riskRunId, bookName, tcn);
-        this.underlying = currency;
-        this.value = (new Random()).nextDouble();
         this.riskType = RiskType.DELTA;
+        this.kvp.put(this.nameValue,(new Random()).nextDouble());
+        this.kvp.put(this.nameUnderlying, underlying);
     }
 
     @Override
@@ -31,10 +35,10 @@ public class Delta extends Risk {
     }
 
     public Double getValue() {
-        return value;
+        return (Double)this.kvp.get(this.nameValue);
     }
 
     public Underlying getUnderlying() {
-        return underlying;
+        return (Underlying)this.kvp.get(this.nameUnderlying);
     }
 }

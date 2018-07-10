@@ -13,7 +13,7 @@ public class RiskResult {
     protected RiskRunId riskRunId;
     protected int fragmentCount;
     protected int fragmentNo;
-    protected List<? extends Risk> results;
+    protected List<Risk> results;
     protected boolean isDeleteEvent;               // true if the contained results are a consequence of trades being removed
 
     public RiskResult(CalculationContextId calculationContextId,
@@ -61,7 +61,7 @@ public class RiskResult {
         return fragmentNo;
     }
 
-    public List<? extends Risk> getResults() {
+    public List<Risk> getResults() {
         return results;
     }
 

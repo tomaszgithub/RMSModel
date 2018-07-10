@@ -10,8 +10,8 @@ import com.reporting.mocks.model.underlying.Currency;
 import java.util.Random;
 
 public class Pv extends Risk {
-    protected Double value;
-    protected Currency currency;
+    private final String nameValue = "value";
+    private final String nameCurrency = "currency";
 
     public Pv() {
         super();
@@ -21,25 +21,26 @@ public class Pv extends Risk {
     public Pv(CalculationContextId calculationId, MarketEnvId marketEnvId, TradePopulationId tradePopulationId, RiskRunId riskRunId, String bookName, Tcn tcn, Currency currency) {
         super(calculationId, marketEnvId, tradePopulationId, riskRunId, bookName, tcn);
         Random rand = new Random();
-        this.currency = currency;
-        this.value = rand.nextDouble();
         this.riskType = RiskType.PV;
+
+        this.kvp.put(this.nameValue, rand.nextDouble());
+        this.kvp.put(this.nameCurrency, currency);
+    }
+
+    public Pv(Risk r) {
+        super(r);
     }
 
     public Double getValue() {
-        return value;
+        return (Double)this.kvp.get(this.nameValue);
     }
 
     public Currency getCurrency() {
-        return currency;
+        return (Currency)this.kvp.get(this.nameCurrency);
     }
 
     @Override
     public RiskType getRiskType() {
         return RiskType.PV;
-    }
-
-    public Pv next(RiskRunId riskRunId) {
-        return new Pv(this.calculationContextId, this.marketEnvId, this.tradePopulationId, riskRunId, this.bookName, this.tcn, this.currency);
     }
 }
