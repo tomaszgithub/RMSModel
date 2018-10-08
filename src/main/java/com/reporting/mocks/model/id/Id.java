@@ -3,6 +3,7 @@ package com.reporting.mocks.model.id;
 import java.util.UUID;
 
 public abstract class Id {
+    private String locator;
     private String uri;
     protected UUID id;
 
@@ -12,6 +13,7 @@ public abstract class Id {
         else
             this.id = id;
         this.uri = locator +  "?id=" + this.getId();
+        this.locator = locator;
     }
 
     public Id(String locator) {
@@ -25,4 +27,6 @@ public abstract class Id {
     public String getUri() {
         return uri;
     }
+
+    public String getLocator() { return locator; }
 }

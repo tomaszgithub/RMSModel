@@ -10,8 +10,8 @@ import com.reporting.mocks.model.underlying.Underlying;
 import java.util.Random;
 
 public class Delta extends Risk {
-    private final String nameValue = "value";
-    private final String nameUnderlying = "underlying";
+    protected final String nameValue = "value";
+    protected final String nameUnderlying = "underlying";
 
     public Delta() {
         super();
@@ -27,11 +27,6 @@ public class Delta extends Risk {
         this.riskType = RiskType.DELTA;
         this.kvp.put(this.nameValue,(new Random()).nextDouble());
         this.kvp.put(this.nameUnderlying, underlying);
-    }
-
-    @Override
-    public RiskType getRiskType() {
-        return RiskType.DELTA;
     }
 
     public Double getValue() {

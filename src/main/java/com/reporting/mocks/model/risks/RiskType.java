@@ -3,7 +3,8 @@ package com.reporting.mocks.model.risks;
 public enum RiskType {
     PV("PV"),
     DELTA("Delta"),
-    GAMMA("Gamma");
+    GAMMA("Gamma"),
+    VEGA("Vega");
 
     protected String name;
 

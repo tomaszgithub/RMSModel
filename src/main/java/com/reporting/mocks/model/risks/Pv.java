@@ -39,8 +39,4 @@ public class Pv extends Risk {
         return (Currency)this.kvp.get(this.nameCurrency);
     }
 
-    @Override
-    public RiskType getRiskType() {
-        return RiskType.PV;
-    }
 }

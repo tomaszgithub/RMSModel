@@ -26,4 +26,21 @@ public class CurrencyPair extends OtcUnderlying {
     public Currency getUnderlyingCurrency() {
         return new Currency(this.ccy2);
     }
+
+    @Override
+    public int getComponenetCount() {
+        return 2;
+    }
+
+    @Override
+    public String getComponentName(int componentIndex) {
+        switch (componentIndex) {
+            case 0:
+                return this.ccy1;
+            case 1:
+                return this.ccy2;
+            default:
+                return null;
+        }
+    }
 }

@@ -2,19 +2,20 @@ package com.reporting.mocks.model.dataviews.book;
 
 import com.reporting.mocks.model.risks.Risk;
 import com.reporting.mocks.model.risks.RiskType;
+import com.reporting.mocks.model.trade.Tcn;
 
 import java.util.HashMap;
 import java.util.UUID;
 
-public class TcnRisksAll {
-    UUID tcn;
+public class TcnRiskSet {
+    Tcn tcn;
     HashMap<RiskType, Risk> risks;
 
-    public TcnRisksAll() {
+    public TcnRiskSet() {
         this.risks = new HashMap<>();
     }
 
-    public TcnRisksAll(UUID tcn) {
+    public TcnRiskSet(Tcn tcn) {
         this();
         this.tcn = tcn;
     }
@@ -32,7 +33,7 @@ public class TcnRisksAll {
         }
     }
 
-    public UUID getTcn() {
+    public Tcn getTcn() {
         return tcn;
     }
 
