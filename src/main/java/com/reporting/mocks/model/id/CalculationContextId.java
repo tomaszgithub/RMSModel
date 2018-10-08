@@ -6,7 +6,7 @@ public class CalculationContextId extends Id {
     private String pricingGroupName;
 
     public CalculationContextId(String pricingGroupName, UUID id) {
-        super("calculationcontext:" + pricingGroupName, id);
+        super("/calculationcontext/" + pricingGroupName, id);
         this.pricingGroupName = pricingGroupName;
     }
 

@@ -5,7 +5,7 @@ import java.util.UUID;
 public class RiskRunId extends Id {
 
     public RiskRunId(String pricingGroupName, UUID id) {
-        super("/RiskRun/" + pricingGroupName, id);
+        super("/riskrun/" + pricingGroupName, id);
     }
 
     public RiskRunId(String pricingGroupName) {

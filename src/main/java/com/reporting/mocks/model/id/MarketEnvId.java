@@ -5,7 +5,7 @@ import java.util.UUID;
 public class MarketEnvId extends Id {
 
     public MarketEnvId(String pricingGroupName, UUID id) {
-        super("/MarketEnvironment/" + pricingGroupName, id);
+        super("/calculationcontext/market/" + pricingGroupName, id);
     }
     public MarketEnvId(String pricingGroupName) {
         this(pricingGroupName, null);

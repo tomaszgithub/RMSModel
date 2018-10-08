@@ -12,7 +12,7 @@ public abstract class Id {
             this.id = UUID.randomUUID();
         else
             this.id = id;
-        this.uri = locator +  "?id=" + this.getId();
+        this.uri = locator +  "/" + this.getId();
         this.locator = locator;
     }
 
