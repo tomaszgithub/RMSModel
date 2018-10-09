@@ -22,10 +22,10 @@ public class Delta extends Risk {
         super(r);
     }
 
-    public Delta(CalculationContextId calculationId, MarketEnvId marketEnvId, TradePopulationId tradePopulationId, RiskRunId riskRunId, String bookName, Tcn tcn, Underlying underlying) {
+    public Delta(CalculationContextId calculationId, MarketEnvId marketEnvId, TradePopulationId tradePopulationId, RiskRunId riskRunId, String bookName, Tcn tcn, Underlying underlying, Double value) {
         super(calculationId, marketEnvId, tradePopulationId, riskRunId, bookName, tcn);
         this.riskType = RiskType.DELTA;
-        this.kvp.put(this.nameValue,(new Random()).nextDouble());
+        this.kvp.put(this.nameValue, value);
         this.kvp.put(this.nameUnderlying, underlying);
     }
 

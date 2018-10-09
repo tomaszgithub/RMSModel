@@ -48,8 +48,16 @@ public abstract class Trade {
         return tradeType;
     }
 
+    public void setQuantity(Double quantity) {
+        this.quantity = quantity;
+    }
+
     public Double getQuantity() {
         return quantity;
+    }
+
+    public void setBuySell(BuySell buySell) {
+        this.buySell = buySell;
     }
 
     public BuySell getBuySell() {

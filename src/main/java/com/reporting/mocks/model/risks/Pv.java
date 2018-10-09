@@ -18,13 +18,19 @@ public class Pv extends Risk {
         this.riskType = RiskType.PV;
     }
 
-    public Pv(CalculationContextId calculationId, MarketEnvId marketEnvId, TradePopulationId tradePopulationId, RiskRunId riskRunId, String bookName, Tcn tcn, Currency currency) {
-        super(calculationId, marketEnvId, tradePopulationId, riskRunId, bookName, tcn);
-        Random rand = new Random();
-        this.riskType = RiskType.PV;
 
-        this.kvp.put(this.nameValue, rand.nextDouble());
+    public Pv(CalculationContextId calculationId,
+              MarketEnvId marketEnvId,
+              TradePopulationId tradePopulationId,
+              RiskRunId riskRunId,
+              String bookName,
+              Tcn tcn,
+              Currency currency,
+              Double value) {
+        super(calculationId, marketEnvId, tradePopulationId, riskRunId, bookName, tcn);
+        this.riskType = RiskType.PV;
         this.kvp.put(this.nameCurrency, currency);
+        this.kvp.put(this.nameValue, value);
     }
 
     public Pv(Risk r) {
@@ -38,5 +44,4 @@ public class Pv extends Risk {
     public Currency getCurrency() {
         return (Currency)this.kvp.get(this.nameCurrency);
     }
-
 }

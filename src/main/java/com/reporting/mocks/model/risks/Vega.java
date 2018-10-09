@@ -38,14 +38,11 @@ public class Vega extends Risk {
                 TradePopulationId tradePopulationId,
                 RiskRunId riskRunId,
                 String bookName,
-                Tcn tcn) {
+                Tcn tcn,
+                List<String> bucketNames) {
         super(calculationId, marketEnvId, tradePopulationId, riskRunId, bookName, tcn);
         this.riskType = RiskType.VEGA;
-    }
-
-    public void addTimeBuckets(List<String> bucketNames) {
-        this.kvp.put(this.nameTimeBuckets, bucketNames);
-    }
+        this.kvp.put(this.nameTimeBuckets, bucketNames);    }
 
     public void addTimeBuckValues(String underlying, List<Double> bucketValues) {
         this.kvp.put(underlying, bucketValues);
