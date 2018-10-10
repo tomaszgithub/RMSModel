@@ -10,20 +10,26 @@ public abstract class Trade {
     protected Double quantity;
     protected BuySell buySell;
 
-    protected Trade(TradeKind kind, TradeType tradeType, Tcn tcn, String book) {
+    protected Trade(TradeKind kind,
+                    TradeType tradeType,
+                    Tcn tcn,
+                    String book,
+                    Double quantity,
+                    BuySell buySell) {
         this.kind = kind;
         this.tradeType = tradeType;
         this.tcn = tcn;
         this.book = book;
+        this.quantity = quantity;
+        this.buySell = buySell;
     }
 
-    protected Trade(TradeKind kind, TradeType tradeType, String book) {
-        this(kind, tradeType, new Tcn(), book);
+    public Trade(TradeKind kind, TradeType tradeType, String book) {
+        this(kind, tradeType, new Tcn(), book, 0.0, BuySell.Sell);
     }
-
 
     public Trade(Trade trade) {
-        this(trade.getKind(), trade.getTradeType(), trade.getTcn().createNewVersion(), trade.getBook());
+        this(trade.getKind(), trade.getTradeType(), trade.getTcn().createNewVersion(), trade.getBook(), trade.quantity, trade.buySell);
     }
 
     public abstract Underlying getUnderlying();

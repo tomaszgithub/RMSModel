@@ -10,21 +10,28 @@ import java.util.Random;
 public class Spot extends OtcTrade {
     protected Date settlementDate;
     protected Double rate;
-    protected Double amount;
+    protected Double amountCcy1;
+    protected Double amountCcy2;
 
-    public Spot(OtcUnderlying underlying, String book) {
+    public Spot(OtcUnderlying underlying,
+                Date settlementDate,
+                Double rate,
+                Double amountCcy1,
+                Double amountCcy2,
+                String book) {
         super(TradeType.Spot, underlying, book);
-        this.settlementDate = new Date();
-        this.rate = (new Random()).nextDouble();
-        this.amount = (new Random()).nextDouble();
-
+        this.settlementDate = settlementDate;
+        this.rate = rate;
+        this.amountCcy1 = amountCcy1;
+        this.amountCcy2 = amountCcy2;
     }
 
     public Spot(Spot fxSpot) {
         super(fxSpot);
         this.settlementDate = fxSpot.settlementDate;
         this.rate = fxSpot.rate;
-        this.amount = fxSpot.getAmount();
+        this.amountCcy1 = fxSpot.amountCcy1;
+        this.amountCcy2 = fxSpot.amountCcy2;
     }
 
     public Date getSettlementDate() {
@@ -35,8 +42,12 @@ public class Spot extends OtcTrade {
         return rate;
     }
 
-    public Double getAmount() {
-        return amount;
+    public Double getAmountCcy1() {
+        return amountCcy1;
+    }
+
+    public Double getAmountCcy2() {
+        return amountCcy2;
     }
 
     @Override
