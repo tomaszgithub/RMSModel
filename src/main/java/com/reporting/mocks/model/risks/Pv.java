@@ -5,7 +5,6 @@ import com.reporting.mocks.model.id.MarketEnvId;
 import com.reporting.mocks.model.id.RiskRunId;
 import com.reporting.mocks.model.id.TradePopulationId;
 import com.reporting.mocks.model.trade.Tcn;
-import com.reporting.mocks.model.underlying.Currency;
 import com.reporting.mocks.model.underlying.Underlying;
 
 import java.util.Random;

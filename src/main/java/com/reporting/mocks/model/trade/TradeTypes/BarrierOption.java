@@ -43,6 +43,10 @@ public class BarrierOption extends Trade {
         return underlying2;
     }
 
+    public Double getUnderlying2Amount() {
+        return this.getUnderlying1Amount() * this.strike * -1;
+    }
+
     public Date getExpiryDate() {
         return expiryDate;
     }
@@ -55,12 +59,5 @@ public class BarrierOption extends Trade {
         return barrier;
     }
 
-    public Double getAmount1() {
-        return this.quantity;
-    }
-
-    public Double getAmount2() {
-        return this.quantity * this.strike * -1;
-    }
 
 }

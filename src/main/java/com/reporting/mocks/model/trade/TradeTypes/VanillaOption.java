@@ -50,11 +50,7 @@ public class VanillaOption extends Trade {
         return strike;
     }
 
-    public Double getAmount1() {
-        return this.quantity;
-    }
-
-    public Double getAmount2() {
-        return this.quantity * this.strike * -1;
+    public Double getUnderlying2Amount() {
+        return this.getUnderlying1Amount() * this.strike * -1;
     }
 }

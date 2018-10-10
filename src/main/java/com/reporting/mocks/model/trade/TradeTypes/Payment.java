@@ -26,8 +26,4 @@ public class Payment extends Trade {
     public Date getSettlementDate() {
         return settlementDate;
     }
-
-    public Double getAmount1() {
-        return this.quantity;
-    }
 }
