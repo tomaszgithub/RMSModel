@@ -6,12 +6,13 @@ import com.reporting.mocks.model.id.RiskRunId;
 import com.reporting.mocks.model.id.TradePopulationId;
 import com.reporting.mocks.model.trade.Tcn;
 import com.reporting.mocks.model.underlying.Currency;
+import com.reporting.mocks.model.underlying.Underlying;
 
 import java.util.Random;
 
 public class Pv extends Risk {
     private final String nameValue = "value";
-    private final String nameCurrency = "currency";
+    private final String nameUnderlying = "underlying";
 
     public Pv() {
         super();
@@ -25,11 +26,11 @@ public class Pv extends Risk {
               RiskRunId riskRunId,
               String bookName,
               Tcn tcn,
-              Currency currency,
+              Underlying currency,
               Double value) {
         super(calculationId, marketEnvId, tradePopulationId, riskRunId, bookName, tcn);
         this.riskType = RiskType.PV;
-        this.kvp.put(this.nameCurrency, currency);
+        this.kvp.put(this.nameUnderlying, currency);
         this.kvp.put(this.nameValue, value);
     }
 
@@ -41,7 +42,7 @@ public class Pv extends Risk {
         return (Double)this.kvp.get(this.nameValue);
     }
 
-    public Currency getCurrency() {
-        return (Currency)this.kvp.get(this.nameCurrency);
+    public Underlying getUnderlying() {
+        return (Underlying)this.kvp.get(this.nameUnderlying);
     }
 }

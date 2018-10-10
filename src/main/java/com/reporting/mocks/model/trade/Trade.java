@@ -1,5 +1,6 @@
 package com.reporting.mocks.model.trade;
 
+
 import com.reporting.mocks.model.underlying.Underlying;
 
 public abstract class Trade {
@@ -8,31 +9,39 @@ public abstract class Trade {
     protected String book;
     protected TradeType tradeType;
     protected Double quantity;
-    protected BuySell buySell;
+    protected Underlying underlying1;
 
     protected Trade(TradeKind kind,
                     TradeType tradeType,
                     Tcn tcn,
                     String book,
                     Double quantity,
-                    BuySell buySell) {
+                    Underlying underlying1) {
         this.kind = kind;
         this.tradeType = tradeType;
         this.tcn = tcn;
         this.book = book;
         this.quantity = quantity;
-        this.buySell = buySell;
+        this.underlying1 = underlying1;
     }
 
-    public Trade(TradeKind kind, TradeType tradeType, String book) {
-        this(kind, tradeType, new Tcn(), book, 0.0, BuySell.Sell);
+    protected Trade(TradeKind kind,
+                    TradeType tradeType,
+                    String book,
+                    Double quantity,
+                    Underlying underlying1) {
+        this(kind, tradeType, new Tcn(), book, quantity, underlying1);
     }
+
+//    public Trade(TradeKind kind, TradeType tradeType, String book) {
+//        this(kind, tradeType, new Tcn(), book, 0.0);
+//    }
 
     public Trade(Trade trade) {
-        this(trade.getKind(), trade.getTradeType(), trade.getTcn().createNewVersion(), trade.getBook(), trade.quantity, trade.buySell);
+        this(trade.getKind(), trade.getTradeType(), trade.getTcn().createNewVersion(), trade.getBook(), trade.quantity, trade.underlying1);
     }
 
-    public abstract Underlying getUnderlying();
+    public abstract Trade createNewVersion();
 
     public TradeKind getKind() {
         return kind;
@@ -40,10 +49,6 @@ public abstract class Trade {
 
     public Tcn getTcn() {
         return tcn;
-    }
-
-    public int getVersion() {
-        return this.tcn.version;
     }
 
     public String getBook() {
@@ -54,23 +59,15 @@ public abstract class Trade {
         return tradeType;
     }
 
-    public void setQuantity(Double quantity) {
-        this.quantity = quantity;
-    }
-
     public Double getQuantity() {
         return quantity;
     }
 
-    public void setBuySell(BuySell buySell) {
-        this.buySell = buySell;
+    public Underlying getUnderlying1() {
+        return underlying1;
     }
 
-    public BuySell getBuySell() {
-        return buySell;
-    }
-
-    public abstract Trade createNewVersion();
+    public int getVersion() { return this.tcn.getVersion(); }
 
     @Override
     public String toString() {

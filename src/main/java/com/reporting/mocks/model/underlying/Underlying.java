@@ -1,11 +1,13 @@
 package com.reporting.mocks.model.underlying;
 
-public abstract class Underlying {
+public class Underlying {
+    protected String name;
 
-    public abstract Currency getUnderlyingCurrency();
+    public Underlying(String name) {
+        this.name = name;
+    }
 
-    public abstract int getComponenetCount();
-
-    public abstract String getComponentName(int componentIndex);
-
+    public String getName() {
+        return name;
+    }
 }

@@ -5,7 +5,8 @@ public enum TradeType {
     Forward("Forward"),
     Swap("Swap"),
     VanillaOption("VanillaOption"),
-    BarrierOption("BarrierOption");
+    BarrierOption("BarrierOption"),
+    Payment("Payment");
 
     protected String name;
 

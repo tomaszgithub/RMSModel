@@ -2,7 +2,8 @@ package com.reporting.mocks.model.trade;
 
 public enum TradeKind {
     Otc("OTC"),
-    Security("Security");
+    Security("Security"),
+    Any("Any");
 
     protected String name;
 
