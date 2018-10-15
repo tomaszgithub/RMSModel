@@ -13,6 +13,10 @@ public class BarrierOption extends Trade {
     protected Double strike;
     protected Double barrier;
 
+    public BarrierOption() {
+        super();
+    }
+
     public BarrierOption(String book,
                          Double quantity,
                          Underlying underlying1,

@@ -17,6 +17,8 @@ public class TradePopulation {
     protected DataMarkerType type;
 
 
+    public UUID getUUID() { return this.tradePopulationId.getId();}
+
     public TradePopulationId getId() {
         return this.tradePopulationId;
     }

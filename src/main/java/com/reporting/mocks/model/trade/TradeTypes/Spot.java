@@ -12,6 +12,10 @@ public class Spot extends Trade {
     protected Date settlementDate;
     protected Double price;
 
+    public Spot() {
+        super();
+    }
+
     public Spot(String book, Double quantity, Underlying underlying1, Underlying underlying2, Date settlementDate, Double price) {
         super(TradeKind.Any, TradeType.Spot, book, quantity, underlying1);
         this.underlying2 = underlying2;

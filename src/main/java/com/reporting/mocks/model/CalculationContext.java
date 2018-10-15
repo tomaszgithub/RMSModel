@@ -15,18 +15,23 @@ import java.util.Map;
     risk.
  */
 public class CalculationContext {
+    protected PricingGroup pricingGroup;
     protected CalculationContextId calculationContextId;
     protected Date timeStamp;
     protected Map<RiskType, MarketEnvId> markets;
 
-    public CalculationContext(String pricingGroupName) {
-        this.calculationContextId = new CalculationContextId(pricingGroupName);
+    public CalculationContext() {
+    }
+    
+    public CalculationContext(PricingGroup pricingGroup) {
+        this.pricingGroup = pricingGroup;
+        this.calculationContextId = new CalculationContextId(pricingGroup.getName());
         this.timeStamp = new Date();
         this.markets = new HashMap<>();
     }
 
     public CalculationContext(CalculationContext calcContext) {
-        this(calcContext.calculationContextId.getPricingGroupName());
+        this(calcContext.getPricingGroup());
         this.markets = new HashMap<>(calcContext.markets);
     }
 
@@ -45,13 +50,19 @@ public class CalculationContext {
 
     }
 
-    public CalculationContextId getId() { return this.calculationContextId; }
-
     public Date getTimeStamp() {
         return timeStamp;
     }
 
     public Map<RiskType, MarketEnvId> getMarkets() {
         return markets;
+    }
+
+    public PricingGroup getPricingGroup() {
+        return this.pricingGroup;
+    }
+
+    public CalculationContextId getCalculationContextId() {
+        return this.calculationContextId;
     }
 }

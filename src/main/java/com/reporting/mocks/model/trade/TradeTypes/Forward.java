@@ -12,6 +12,9 @@ public class Forward extends Trade {
     protected Date settlementDate;
     protected Double price;
 
+    public Forward() {
+        super();
+    }
     public Forward(String book,
                    Double quantity,
                    Underlying underlying1,

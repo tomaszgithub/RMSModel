@@ -11,6 +11,9 @@ public abstract class Trade {
     protected Double underlying1Amount;
     protected Underlying underlying1;
 
+    public Trade() {
+    }
+
     protected Trade(TradeKind kind,
                     TradeType tradeType,
                     Tcn tcn,

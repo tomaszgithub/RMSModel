@@ -5,6 +5,9 @@ import java.util.UUID;
 public class CalculationContextId extends Id {
     private String pricingGroupName;
 
+    public CalculationContextId() {
+        super();
+    }
     public CalculationContextId(String pricingGroupName, UUID id) {
         super("/calculationcontext/" + pricingGroupName, id);
         this.pricingGroupName = pricingGroupName;

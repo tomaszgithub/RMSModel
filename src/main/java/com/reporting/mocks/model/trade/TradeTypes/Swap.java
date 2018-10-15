@@ -13,6 +13,10 @@ public class Swap extends Trade {
     protected Date farSettlementDate;
     protected Double price;
 
+    public Swap() {
+        super();
+    }
+
     public Swap(
             String book,
             Double quantity,

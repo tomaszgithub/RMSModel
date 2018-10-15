@@ -8,6 +8,9 @@ import java.util.Date;
 public class Payment extends Trade {
     protected Date settlementDate;
 
+    public Payment() {
+        super();
+    }
 
     public Payment(String book, Double quantity, Underlying underlying1, Date settlementDate) {
         super(TradeKind.Any, TradeType.Payment, book, quantity, underlying1);

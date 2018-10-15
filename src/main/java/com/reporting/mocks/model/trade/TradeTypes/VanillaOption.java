@@ -12,6 +12,10 @@ public class VanillaOption extends Trade {
     protected Date expiryDate;
     protected Double strike;
 
+    public VanillaOption() {
+        super();
+    }
+
     public VanillaOption(
             String book,
             Double quantity,
