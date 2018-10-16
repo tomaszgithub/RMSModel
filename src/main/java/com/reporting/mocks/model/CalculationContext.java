@@ -22,7 +22,7 @@ public class CalculationContext {
 
     public CalculationContext() {
     }
-    
+
     public CalculationContext(PricingGroup pricingGroup) {
         this.pricingGroup = pricingGroup;
         this.calculationContextId = new CalculationContextId(pricingGroup.getName());
