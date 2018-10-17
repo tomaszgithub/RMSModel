@@ -1,5 +1,6 @@
 package com.reporting.mocks.model.trade.TradeTypes;
 
+import com.reporting.mocks.model.trade.Tcn;
 import com.reporting.mocks.model.trade.Trade;
 import com.reporting.mocks.model.trade.TradeKind;
 import com.reporting.mocks.model.trade.TradeType;
@@ -8,13 +9,29 @@ import com.reporting.mocks.model.underlying.Underlying;
 import java.util.Date;
 
 public class Swap extends Trade {
-    protected Underlying underlying2;
-    protected Date nearSettlementDate;
-    protected Date farSettlementDate;
-    protected Double price;
+    private final String underlying2 = "underlying2";
+    private final String nearSettlementDate = "nearSettlementDate";
+    private final String farSettlementDate = "farSettlementDate";
+    private final String price = "price";
 
     public Swap() {
         super();
+    }
+
+    protected Swap(
+            String book,
+            Tcn tcn,
+            Double quantity,
+            Underlying underlying1,
+            Underlying underlying2,
+            Date nearSettlementDate,
+            Date farSettlementDate,
+            Double price) {
+        super(TradeKind.Any, TradeType.Swap, tcn, book, quantity, underlying1);
+        this.assignAttribute(this.underlying2, underlying2);
+        this.assignAttribute(this.nearSettlementDate, nearSettlementDate);
+        this.assignAttribute(this.farSettlementDate, farSettlementDate);
+        this.assignAttribute(this.price, price);
     }
 
     public Swap(
@@ -26,43 +43,44 @@ public class Swap extends Trade {
             Date farSettlementDate,
             Double price
             ) {
-        super(TradeKind.Any, TradeType.Swap, book, quantity, underlying1);
-        this.underlying2 = underlying2;
-        this.nearSettlementDate = nearSettlementDate;
-        this.farSettlementDate = farSettlementDate;
-        this.price = price;
+        this(book, new Tcn(), quantity, underlying1, underlying2, nearSettlementDate, farSettlementDate, price);
     }
 
     public Swap(Swap swap) {
-        super(swap);
-        this.underlying2 = swap.underlying2;
-        this.nearSettlementDate = swap.nearSettlementDate;
-        this.farSettlementDate = swap.farSettlementDate;
-        this.price = swap.price;
+        this(swap.getBook(),
+                swap.getUnderlying1Amount(),
+                swap.getUnderlying1(),
+                swap.getUnderlying2(),
+                swap.getNearSettlementDate(),
+                swap.getFarSettlementDate(),
+                swap.getPrice());
     }
 
     @Override
     public Swap createNewVersion() {
-        return new Swap(this);
+        return new Swap(this.getBook(),
+                this.getTcn().createNewVersion(),
+                this.getUnderlying1Amount(),
+                this.getUnderlying1(),
+                this.getUnderlying2(),
+                this.getNearSettlementDate(),
+                this.getFarSettlementDate(),
+                this.getPrice());
     }
 
     public Underlying getUnderlying2() {
-        return underlying2;
+        return (Underlying)this.retreiveAttribute(this.underlying2);
     }
 
-    public Date getNearSettlementDate() {
-        return nearSettlementDate;
-    }
+    public Date getNearSettlementDate() { return (Date)this.retreiveAttribute(this.nearSettlementDate); }
 
-    public Date getFarSettlementDate() {
-        return farSettlementDate;
-    }
+    public Date getFarSettlementDate() { return (Date)this.retreiveAttribute(this.farSettlementDate); }
 
     public Double getPrice() {
-        return price;
+        return (Double)this.retreiveAttribute(this.price);
     }
 
     public Double getUnderlying2Amount() {
-        return this.getUnderlying1Amount() * this.price * -1;
+        return this.getUnderlying1Amount() * this.getPrice() * -1;
     }
 }
