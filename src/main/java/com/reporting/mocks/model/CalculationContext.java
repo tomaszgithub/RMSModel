@@ -15,10 +15,13 @@ import java.util.Map;
     risk.
  */
 public class CalculationContext {
+
     protected PricingGroup pricingGroup;
     protected CalculationContextId calculationContextId;
     protected Date timeStamp;
     protected Map<RiskType, MarketEnvId> markets;
+    private long timeStampGen = System.currentTimeMillis();
+
 
     public CalculationContext() {
     }
@@ -64,5 +67,9 @@ public class CalculationContext {
 
     public CalculationContextId getCalculationContextId() {
         return this.calculationContextId;
+    }
+
+    public long getTimeStampGen() {
+        return timeStampGen;
     }
 }

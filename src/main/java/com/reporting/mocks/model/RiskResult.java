@@ -16,6 +16,7 @@ public class RiskResult {
     protected int fragmentNo;
     protected List<Risk> results;
     protected boolean isDeleteEvent;               // true if the contained results are a consequence of trades being removed
+    protected long timeStampGen;
 
     public RiskResult(CalculationContextId calculationContextId,
                       TradePopulationId tradePopulationId,
@@ -31,6 +32,10 @@ public class RiskResult {
         this.fragmentNo = fragmentNo;
         this.results = results;
         this.isDeleteEvent = isDeleteEvent;
+        this.timeStampGen = System.currentTimeMillis();
+        for (Risk r:results) {
+            r.setTimeStampGen(this.timeStampGen);
+        }
     }
 
 
@@ -68,5 +73,9 @@ public class RiskResult {
 
     public boolean isDeleteEvent() {
         return isDeleteEvent;
+    }
+
+    public long getTimestamp() {
+        return timeStampGen;
     }
 }

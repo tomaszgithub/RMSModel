@@ -9,6 +9,8 @@ public class MarketEnv {
     protected Date asOf;
     protected PricingGroup pricingGroup;
     protected DataMarkerType type;
+    private long timeStampGen = System.currentTimeMillis();
+
 
     public MarketEnv(PricingGroup pricingGroup, DataMarkerType type) {
         this.marketEnvId= new MarketEnvId(pricingGroup.getName());
@@ -29,5 +31,9 @@ public class MarketEnv {
 
     public DataMarkerType getType() {
         return type;
+    }
+
+    public long getTimeStampGen() {
+        return timeStampGen;
     }
 }

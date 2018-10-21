@@ -17,6 +17,7 @@ public class Risk {
     protected String bookName;
     protected Tcn tcn;
     protected RiskType riskType;
+    private long timeStampGen;
 
     protected Map<String, Object> kvp;  // set of key-value pairs representing the risk
 
@@ -72,5 +73,13 @@ public class Risk {
 
     public RiskType getRiskType() {
         return riskType;
+    }
+
+    public long getTimeStampGen() {
+        return timeStampGen;
+    }
+
+    public void setTimeStampGen(long timeStampGen) {
+        this.timeStampGen = timeStampGen;
     }
 }
